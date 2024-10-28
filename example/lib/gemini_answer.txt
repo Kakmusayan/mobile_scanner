@@ -1,0 +1,93 @@
+PS C:\Users\Acer\Documents\development\projects\mobil_scanner\mobile_scanner\example\lib> flutter run
+Changing current working directory to: C:\Users\Acer\Documents\development\projects\mobil_scanner\mobile_scanner\exampleConnected devices:
+Chrome (web) • chrome • web-javascript • Google Chrome 130.0.6723.70
+Edge (web)   • edge   • web-javascript • Microsoft Edge 129.0.2792.89
+[1]: Chrome (chrome)
+[2]: Edge (edge)
+Please choose one (or "q" to quit): q
+
+PS C:\Users\Acer\Documents\development\projects\mobil_scanner\mobile_scanner\example\lib> flutter run
+Changing current working directory to: C:\Users\Acer\Documents\development\projects\mobil_scanner\mobile_scanner\exampleLaunching lib\main.dart on sdk gphone x86 in debug mode...
+
+FAILURE: Build failed with an exception.
+
+* Where:
+Build file 'C:\Users\Acer\Documents\development\projects\mobil_scanner\mobile_scanner\example\android\app\build.gradle' 
+line: 2
+
+* What went wrong:
+An exception occurred applying plugin request [id: 'com.android.application']
+> Failed to apply plugin 'com.android.internal.application'.
+   > Android Gradle plugin requires Java 17 to run. You are currently using Java 11.
+      Your current JDK is located in C:\Program Files\Android\Android Studio\jre
+      You can try some of the following options:
+       - changing the IDE settings.
+       - changing the JAVA_HOME environment variable.
+       - changing `org.gradle.java.home` in `gradle.properties`.
+
+      Your current JDK is located in C:\Program Files\Android\Android Studio\jre
+      You can try some of the following options:
+       - changing the IDE settings.
+       - changing the JAVA_HOME environment variable.
+       - changing `org.gradle.java.home` in `gradle.properties`.
+
+       - changing the IDE settings.
+       - changing the JAVA_HOME environment variable.
+       - changing `org.gradle.java.home` in `gradle.properties`.
+
+       - changing `org.gradle.java.home` in `gradle.properties`.
+
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 3m 23s
+Running Gradle task 'assembleDebug'...                            203,8s
+Error: Gradle task assembleDebug failed with exit code 1
+PS C:\Users\Acer\Documents\development\projects\mobil_scanner\mobile_scanner\example\lib>            
+
+
+
+The error message is telling you that your Flutter project needs Java 17 to build, but it's currently finding Java 11 on your system.
+
+Here's how to fix it:
+
+1. Verify your Android Studio JDK:
+
+Open Android Studio and go to File > Project Structure > SDK Location.
+Check the JDK location path. It should point to a JDK 17 installation. If not, download and install JDK 17 from https://www.oracle.com/java/technologies/downloads/ and update the path here.
+2. Update JAVA_HOME environment variable:
+
+Windows:
+Search for "Environment Variables" in the Windows search bar.
+Click on "Edit the system environment variables".
+In the "System variables" section, look for a variable named "JAVA_HOME".
+If it exists, edit it and set its value to the path of your JDK 17 installation (e.g., "C:\Program Files\Java\jdk-17.0.2").
+If it doesn't exist, click "New" and create a new system variable with the name "JAVA_HOME" and the value set to your JDK 17 path.
+macOS/Linux:
+Open your shell configuration file (e.g., .bashrc, .zshrc).
+Add the following line, replacing /path/to/your/jdk-17 with the actual path to your JDK 17 installation:
+export JAVA_HOME=/path/to/your/jdk-17
+Save the file and run source ~/.bashrc (or the equivalent command for your shell) to apply the changes.
+3. Update org.gradle.java.home in gradle.properties (Optional):
+
+Open the gradle.properties file in your project's root directory.
+Add or modify the following line to point to your JDK 17 installation: org.gradle.java.home=/path/to/your/jdk-17
+4. Invalidate Caches and Restart:
+
+In Android Studio, go to File > Invalidate Caches / Restart... and click "Invalidate and Restart".
+5. Clean and Rebuild:
+
+Run flutter clean in your terminal from your project's root directory.
+Then try running flutter run again.
+If you've followed these steps and are still facing issues, provide the following information so I can assist you further:
+
+Operating System: (e.g., Windows 10, macOS Monterey)
+Flutter version: (run flutter --version in your terminal)
+Android Studio version: (go to Help > About in Android Studio)
+Rate this answer: 
+Context Sources (1 file)
